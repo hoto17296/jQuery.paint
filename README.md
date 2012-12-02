@@ -1,2 +1,2 @@
 # jQuery.paint
-readmeのてすと
+[デモページ](http://hotolab.net/jquery.paint/)
