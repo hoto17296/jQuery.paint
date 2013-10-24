@@ -8,6 +8,8 @@
 
 body {
 	font-size: smaller;
+  height: 100%;
+  width: 100%;
 	background-color: #eee;
 	margin: 1em;
 }
