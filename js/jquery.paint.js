@@ -131,10 +131,10 @@
 					).append(
 						$('<canvas/>').addClass(prfx+'-canvas-draw')
 							.attr({width:options.width, height:options.height})
-							.mousedown(methods.mousedown)
-							.mouseup(methods.mouseup)
-							.mousemove(methods.mousemove)
-							.mouseout(methods.mouseout)
+							.mousedown(methods.mousedown).touchstart(methods.mousedown)
+							.mouseup(methods.mouseup).touchend(methods.mouseup)
+							.mousemove(methods.mousemove).touchmove(methods.mousemove)
+							.mouseout(methods.mouseout).touchcancel(methods.mouseout)
 					)
 				)
 			);
