@@ -6,8 +6,8 @@ Webサイトに簡単にお絵かき機能を実装できるよ
 * やり直し(Undo)は１回のみ可
 
 ## デモページ
-http://hotolab.net/page/jquery.paint/  
-http://hotolab.net/page/jquery.paint/edit.html 画像読み込みデモ
+http://hotolab.net/jQuery.paint/
+http://hotolab.net/jQuery.paint/edit.html 画像読み込みデモ
 
 ## オプション
 * width  
