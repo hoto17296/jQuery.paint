@@ -133,7 +133,7 @@
 							.attr({width:options.width, height:options.height})
 							.mousedown(methods.mousedown).bind('touchstart', methods.mousedown)
 							.mouseup(methods.mouseup).bind('touchend', methods.mouseup)
-							.mousemove(methods.mousemove).bind('touchmove', methods.mousemove)
+							.mousemove(methods.mousemove).bind('touchmove', methods.touchmove)
 							.mouseout(methods.mouseout).bind('touchcancel', methods.mouseout)
 					)
 				)
@@ -232,6 +232,10 @@
 		},
 		mouseup : function(e){ drawFlag = false; },
 		mouseout : function(e){ drawFlag = false; },
+    touchmove : function(e){
+      methods.mousemove(e);
+      event.preventDefault();
+    },
 		
 		saveUndo : function(){
 			undoImg = c.elem.loadCanvas().getImageData(0, 0, c.w, c.h);
