@@ -49,12 +49,22 @@
 	
 	var drawFlag = false;
 	var undoImg = null;
-	var c = { elem:null, w:options.width, h:options.height };
+  var isTouch = (document.ontouchstart !== undefined);
+	var c = {
+    elem: null,
+    w: options.width,
+    h: options.height,
+    context: function(ctx){
+      if (!this.elem[0].getContext){ return null; }
+      return this.elem[0].getContext(ctx||'2d');
+    }
+  };
 	var p = {
 			x:0,	oldX:0,
 			y:0,	oldY:0,
 			pos: function(e){
 				var rect = e.target.getBoundingClientRect();
+        if (isTouch) e = e.originalEvent.touches[0];
 				this.x = e.clientX - rect.left;
 				this.y = e.clientY - rect.top;
 			},
@@ -71,7 +81,6 @@
 			var obj = this;
 			
 			options = $.extend(options, args);
-			console.log(options);
 			
 			var prfx = options.prefix;
 			
@@ -167,7 +176,7 @@
 			if(undoImg==null) return;
 			var tmp = undoImg;
 			methods.saveUndo();
-			c.elem.loadCanvas().putImageData(tmp, 0, 0);
+			c.context().putImageData(tmp, 0, 0);
 		},
 		
 		clear : function(){
@@ -185,7 +194,7 @@
 			p.pos(e);
 			switch(status.shape){
 			case 'hand':
-				$(this).drawLine({
+				c.elem.drawLine({
 					strokeStyle: status.color,
 					strokeWidth: status.thickness,
 					strokeCap: "round",
@@ -196,8 +205,8 @@
 				p.savePos(e);
 				break;
 			case 'line':
-				$(this).loadCanvas().putImageData(undoImg, 0, 0);
-				$(this).drawLine({
+				c.context().putImageData(undoImg, 0, 0);
+				c.elem.drawLine({
 					strokeStyle: status.color,
 					strokeWidth: status.thickness,
 					strokeCap: "round",
@@ -207,8 +216,8 @@
 				});
 				break;
 			case 'rect':
-				$(this).loadCanvas().putImageData(undoImg, 0, 0);
-				$(this).drawRect({
+				c.context().putImageData(undoImg, 0, 0);
+				c.elem.drawRect({
 					strokeStyle: status.color,
 					strokeWidth: status.thickness,
 					x: p.oldX, y: p.oldY,
@@ -218,8 +227,8 @@
 				});
 				break;
 			case 'arc':
-				$(this).loadCanvas().putImageData(undoImg, 0, 0);
-				$(this).drawEllipse({
+				c.context().putImageData(undoImg, 0, 0);
+				c.elem.drawEllipse({
 					strokeStyle: status.color,
 					strokeWidth: status.thickness,
 					x: p.oldX, y: p.oldY,
@@ -238,7 +247,7 @@
     },
 		
 		saveUndo : function(){
-			undoImg = c.elem.loadCanvas().getImageData(0, 0, c.w, c.h);
+			undoImg = c.context().getImageData(0, 0, c.w, c.h);
 		},
 	};
 	
