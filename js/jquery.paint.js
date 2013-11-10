@@ -1,8 +1,8 @@
 /*!
  * jQuery.paint
  *
- * Copyright (c) 2012 ほと(@hoto17296).
- * http://blog.hotolab.net/
+ * Copyright (c) 2012-2013 ほと(@hoto17296).
+ * https://github.com/hoto17296/jQuery.paint
  */
 
 (function($){
