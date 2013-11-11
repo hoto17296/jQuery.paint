@@ -2,12 +2,14 @@
 
 ## 概要
 Webサイトに簡単にお絵かき機能を実装できるよ  
-* 本当に必要最低限なお絵かき機能のみ
-* やり直し(Undo)は１回のみ可
+
+- 本当に必要最低限なお絵かき機能のみ
+- やり直し(Undo)は１回のみ可
+- (2013.11.11)タッチデバイス対応
 
 ## デモページ
-http://hotolab.net/jQuery.paint/
-http://hotolab.net/jQuery.paint/edit.html 画像読み込みデモ
+<http://hotolab.net/jQuery.paint/>  
+<http://hotolab.net/jQuery.paint/edit.html> 画像読み込みデモ
 
 ## オプション
 * width  
