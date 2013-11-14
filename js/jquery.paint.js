@@ -44,6 +44,7 @@
     },
     colorpicker : {},
     file : null,
+    format : 'jpeg',
     upload : function(image){}
   };
   
@@ -166,8 +167,10 @@
     },
     
     save : function(){
-      $('.'+options.prefix+'-canvas-file').draw(function(ctx){ ctx.drawImage(c.elem[0], 0, 0); });
-      var image = $('.'+options.prefix+'-canvas-file').getCanvasImage("jpeg");
+      if( options.format=='jpeg' ){
+        $('.'+options.prefix+'-canvas-file').draw(function(ctx){ ctx.drawImage(c.elem[0], 0, 0); });
+      }
+      var image = $('.'+options.prefix+'-canvas-file').getCanvasImage(options.format);
       
       options.upload(image);
     },
