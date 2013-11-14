@@ -169,8 +169,10 @@
     save : function(){
       if( options.format=='jpeg' ){
         $('.'+options.prefix+'-canvas-file').draw(function(ctx){ ctx.drawImage(c.elem[0], 0, 0); });
+        var image = $('.'+options.prefix+'-canvas-file').getCanvasImage(options.format);
+      } else {
+        var image = c.elem.getCanvasImage(options.format);
       }
-      var image = $('.'+options.prefix+'-canvas-file').getCanvasImage(options.format);
       
       options.upload(image);
     },
